@@ -8,14 +8,17 @@ public class Home
 
     // Locator constant
     private const string BOOKING_LOGO_LOCATOR = "a[data-testid='header-booking-logo']";
+    private const string CURRENCY_BUTTON_LOCATOR = "[data-testid='header-currency-picker-trigger']";
 
     private readonly IPage _page;
 
-    public Home(IPage page){
+    public Home(IPage page)
+    {
         _page = page;
     }
 
-    public async Task Launch(){
+    public async Task Launch()
+    {
         await _page.GotoAsync("https://www.booking.com");
     }
 
@@ -29,7 +32,13 @@ public class Home
         return title.Contains("Booking.com");
     }
 
-    public ILocator BookingLogo() {
+    public ILocator BookingLogo()
+    {
         return _page.Locator(BOOKING_LOGO_LOCATOR);
+    }
+
+    public ILocator CurrencyButton()
+    {
+        return _page.Locator(CURRENCY_BUTTON_LOCATOR);
     }
 }
